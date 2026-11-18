@@ -1,0 +1,1 @@
+"""CLIPScore metric."""

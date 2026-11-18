@@ -1,0 +1,8 @@
+name: g2
+seeds: [0]
+width: 8
+height: 8
+metrics: [geneval2]
+prompts:
+- {id: a, prompt: two toys, meta: {atom_count: 3, skills: [count, object], vqa_list: [['How many toys are in the image?', two], ['Are there any toys in the image?', 'Yes']]}}
+- {id: b, prompt: a cat, meta: {atom_count: 4, skills: [object, attribute], vqa_list: [['Are there any cats in the image?', 'Yes'], ['Is the cat red?', 'Yes']]}}

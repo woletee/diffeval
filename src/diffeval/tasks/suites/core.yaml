@@ -1,0 +1,12 @@
+name: core
+description: Synthetic smoke prompts. The drawings are not COCO.
+seeds: [0, 1]
+width: 512
+height: 512
+metrics: [clip_score, cmmd, fid, kid]
+reference_dir: references/core
+prompts:
+- {id: red_cube, prompt: a red cube}
+- {id: blue_sphere, prompt: a blue sphere}
+- {id: green_triangle, prompt: a green triangle}
+- {id: yellow_star, prompt: a yellow star}

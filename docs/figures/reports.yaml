@@ -1,0 +1,56 @@
+# One results object, three ways to read it.
+title: the same numbers, three ways
+style:
+  palette: pastel
+  font: virgil
+  text_size: medium
+  seed: 6
+groups:
+  - id: src
+    label: one object
+    color: gray
+    row: 0
+    col: 1
+    halign: center
+    blocks:
+      - id: results
+        kind: latent
+        label: results
+        lines: ["status, mean, std"]
+  - id: console
+    label: console
+    color: teal
+    row: 1
+    col: 0
+    halign: center
+    blocks:
+      - id: table
+        kind: panel
+        label: table
+        lines: ["printed rows"]
+  - id: md
+    label: Markdown
+    color: orange
+    row: 1
+    col: 1
+    halign: center
+    blocks:
+      - id: reportmd
+        kind: panel
+        label: report.md
+        lines: ["the same rows"]
+  - id: html
+    label: HTML
+    color: purple
+    row: 1
+    col: 2
+    halign: center
+    blocks:
+      - id: reporthtml
+        kind: panel
+        label: report.html
+        lines: ["table and images"]
+arrows:
+  - {from: results, to: table, route: orthogonal}
+  - {from: results, to: reportmd}
+  - {from: results, to: reporthtml, route: orthogonal}

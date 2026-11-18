@@ -1,0 +1,65 @@
+# One eval pass, left to right.
+title: one run
+style:
+  palette: pastel
+  font: virgil
+  text_size: small
+  seed: 4
+groups:
+  - id: model
+    label: model
+    color: teal
+    valign: center
+    blocks:
+      - id: pipe
+        kind: panel
+        label: pipeline
+        lines: ["a diffusion model"]
+  - id: fixed
+    label: fixed
+    color: orange
+    blocks:
+      - id: prompts
+        kind: panel
+        label: prompts
+        lines: ["the same text"]
+      - id: seeds
+        kind: panel
+        label: seeds
+        lines: ["the same seeds"]
+  - id: gen
+    label: generate
+    color: pink
+    valign: center
+    blocks:
+      - id: images
+        kind: output
+        label: samples
+        sub: "images, video"
+  - id: score
+    label: metrics
+    color: purple
+    flow: column
+    valign: center
+    blocks:
+      - {id: clip, kind: card, label: CLIP score, lines: ["higher"]}
+      - {id: cmmd, kind: card, label: CMMD, lines: ["lower"]}
+      - {id: fid, kind: card, label: "FID / KID", lines: ["lower"]}
+  - id: write
+    label: write
+    color: gray
+    valign: center
+    blocks:
+      - id: report
+        kind: output
+        label: report
+        sub: "the table"
+arrows:
+  - {from: model, to: fixed}
+  - {from: fixed, to: gen}
+  - {from: gen, to: score}
+  - {from: score, to: write}
+notes:
+  - kind: note
+    label: over the seeds
+    text: "mean and sample standard deviation"

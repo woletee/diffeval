@@ -1,0 +1,25 @@
+# Banner for the diffeval README. Image and video in, scores out.
+title: diffeval
+subtitle: A Framework for Diffusion Model Evaluation
+star: true
+style:
+  palette: pastel
+  font: virgil
+  text_size: large
+  seed: 7
+groups:
+  - id: inn
+    label: in
+    color: teal
+    blocks:
+      - {id: image, kind: input, label: image, sub: a still, width: 1.04}
+      - {id: video, kind: input, label: video, sub: a clip, width: 1.04}
+  - id: out
+    label: out
+    color: purple
+    valign: center
+    blocks:
+      - {id: scores, kind: output, label: scores, sub: "mean and std", width: 1.15}
+arrows:
+  - {from: image, to: scores}
+  - {from: video, to: scores}

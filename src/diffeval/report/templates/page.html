@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{TITLE}}</title>
+<style>
+body { font-family: sans-serif; margin: 1.5rem; color: #222; }
+.note { max-width: 40rem; }
+.layout { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; }
+table { border-collapse: collapse; }
+th, td { border: 1px solid #ccc; padding: 0.3rem 0.6rem; text-align: left; }
+section { margin-bottom: 1.5rem; }
+figure { display: inline-block; margin: 0.4rem; vertical-align: top; }
+img { display: block; max-width: 12rem; height: auto; background: #eee; }
+figcaption { font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<h1>{{TITLE}}</h1>
+<p class="note">Metric numbers have to be checked against the published reference before they are compared to a paper. Scores have to be checked against the published reference implementation and dataset. The core suite is a smoke suite. The bundled drawings are not COCO.</p>
+<div class="layout">
+<table>
+<thead>
+<tr><th>metric</th><th>status</th><th>mean</th><th>std</th><th>per-seed</th><th>direction</th></tr>
+</thead>
+<tbody>
+{{ROWS}}
+</tbody>
+</table>
+<div class="grids">
+{{GRID}}
+</div>
+</div>
+</body>
+</html>

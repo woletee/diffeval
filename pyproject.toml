@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "diffeval"
+version = "0.1.2"
+description = "Evaluation harness for image and video diffusion models"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "woletee" }]
+keywords = ["diffusion", "evaluation", "benchmark", "text-to-image", "fid", "kid", "cmmd", "clip-score"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+]
+dependencies = ["pyyaml", "pillow", "numpy"]
+
+[project.urls]
+Homepage = "https://diffeval.vercel.app"
+Repository = "https://github.com/woletee/diffeval"
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+diffusers = ["torch>=2.6", "diffusers", "transformers", "accelerate", "safetensors"]
+metrics = ["torch>=2.6", "transformers", "clean-fid", "scipy<1.18"]
+benchmarks = ["pyarrow", "huggingface_hub"]
+geneval = []
+geneval2 = ["torch>=2.6", "transformers>=4.57", "accelerate"]
+video = []
+
+[project.scripts]
+diffeval = "diffeval.cli.main:main"
+diffeval-check-cmmd = "diffeval.bench.cmmd_check:main"
+diffeval-coco30k = "diffeval.bench.coco30k_cli:main"
+diffeval-geneval2 = "diffeval.bench.geneval2_cli:main"
+diffeval-check-geneval2 = "diffeval.bench.geneval2_check_cli:main"
+diffeval-coco30k-images = "diffeval.bench.coco30k_images:main"
+diffeval-table = "diffeval.bench.table_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+diffeval = ["report/templates/*.html", "tasks/suites/*.yaml", "tasks/suites/references/core/*.png"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--import-mode=importlib"

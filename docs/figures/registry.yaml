@@ -1,0 +1,71 @@
+# Three registries plug into one table. The CLI reads that table.
+title: what you can register
+style:
+  palette: pastel
+  font: virgil
+  text_size: medium
+  seed: 2
+groups:
+  - id: top
+    frame: false
+    row: 0
+    col: 1
+    halign: center
+    blocks:
+      - id: run
+        kind: panel
+        label: diffeval run
+        lines: ["reads the registry"]
+  - id: reg
+    label: registry
+    color: purple
+    row: 1
+    col: 1
+    halign: center
+    valign: center
+    blocks:
+      - id: book
+        kind: latent
+        label: registry
+        lines: ["name to object"]
+  - id: tasks
+    label: tasks
+    sub: suites
+    color: teal
+    row: 2
+    col: 0
+    valign: center
+    blocks:
+      - id: suites
+        kind: panel
+        label: suites
+        lines: ["prompts and seeds"]
+  - id: mets
+    label: metrics
+    color: orange
+    row: 2
+    col: 1
+    blocks:
+      - {id: clip, kind: card, label: CLIP score}
+      - {id: cmmd, kind: card, label: CMMD}
+      - {id: fid, kind: card, label: "FID / KID"}
+  - id: backs
+    label: backends
+    color: pink
+    row: 2
+    col: 2
+    valign: center
+    blocks:
+      - id: dummy
+        kind: panel
+        label: dummy
+        lines: ["the smoke run"]
+      - id: diff
+        kind: panel
+        label: diffusers
+        lines: ["text to image"]
+arrows:
+  - {from: suites, to: book, route: orthogonal}
+  - {from: clip, to: book}
+  - {from: dummy, to: book, route: orthogonal}
+  - {from: book, to: run}
